@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Campus Selection System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fbf8f3;
+            color: #333;
+        }
+
+        header {
+            background-color: #274546;
+            /* Changed header background color */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #efeee5;
+            /* Changed h1 text color */
+        }
+
+        header nav {
+            margin-top: 20px;
+        }
+
+        header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .menu-toggle {
+            display: none;
+            background-color: #274546;
+            /* Changed menu toggle button color */
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .menu-toggle:focus {
+            outline: none;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+
+        aside {
+            width: 25%;
+            background-color: #274546;
+            /* Changed aside background color */
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        aside .welcome-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        aside .clients img {
+            width: 50%;
+        }
+
+        aside .side-nav {
+            display: flex;
+            flex-direction: column;
+        }
+
+        aside .side-nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #333;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        aside .side-nav a:hover {
+            background-color: #1ABC9C;
+        }
+
+        section.content {
+            width: 75%;
+            padding: 20px;
+            background-color: #efeee5;
+            /* Changed content background color */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+
+        .search-section,
+        .profile-section {
+            margin-bottom: 20px;
+        }
+
+        .search-section h2,
+        .profile-section h2 {
+            color: #274546;
+            /* Changed section header text color */
+        }
+
+        .search-section form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .search-section label,
+        .search-section select,
+        .search-section button {
+            flex: 1;
+            margin: 5px 0;
+        }
+
+        .search-section button {
+            background-color: #274546;
+            /* Changed search button color */
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .search-section button:hover {
+            background-color: #1ABC9C;
+        }
+
+        .profile-section button {
+            margin: 5px;
+            padding: 10px;
+            background-color: #274546;
+            /* Changed profile button color */
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .profile-section button:hover {
+            background-color: #1ABC9C;
+        }
+
+        .profile-details {
+            margin-top: 20px;
+        }
+
+        .profile-details p {
+            margin: 10px 0;
+        }
+
+        .profile-details a {
+            color: #232323;
+            text-decoration: none;
+        }
+
+        footer {
+            background-color: #274546;
+            /* Changed footer background color */
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            aside {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            section.content {
+                width: 100%;
+            }
+
+            header nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+
+            header nav ul {
+                display: flex;
+                flex-direction: column;
+            }
+
+            header nav a {
+                margin: 10px 0;
+            }
+
+            .menu-toggle {
+                display: inline-block;
+                position: relative;
+                /* Change position to relative */
+                top: auto;
+                /* Reset top property */
+                right: auto;
+                /* Reset right property */
+                margin-top: 20px;
+                /* Add margin to separate from h1 */
+            }
+
+            .menu-toggle.active+nav {
+                display: flex;
+                position: absolute;
+                /* Position the menu below h1 */
+                top: 100%;
+                /* Position below h1 */
+                left: 0;
+                /* Align with left edge of header */
+                width: 100%;
+                /* Take full width */
+                background-color: #274546;
+                /* Match header background color */
+                flex-direction: column;
+            }
+
+            header nav {
+                display: none;
+                /* Hide nav by default */
+            }
+
+            header nav ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                /* Center items horizontally */
+            }
+
+            header nav a {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>College Campus Placement System</h1>
+        <button class="menu-toggle">Menu</button>
+       
+    </header>
+
+    <main>
+        <aside>
+            <div class="welcome-section">
+                <h2>Welcome</h2>
+                <div class="clients">
+
+                    <img src="./images/std.png" alt="student">
+                </div>
+            </div>
+            <nav class="side-nav">
+                <a href="home.html">HOME</a>
+                <a href="#">Job Matches</a>
+                <a href="#">Applied Job</a>
+                <a href="about.html">ABOUT US</a>
+                <a href="about.html">CONTACT US</a>
+                <a href="#">LogOut</a>
+            </nav>
+        </aside>
+
+        <section class="content">
+            <div class="search-section">
+                <h2>Find Company Here within a Second !!</h2>
+                <form>
+                    <label for="category">Branch</label>
+                    <select id="category">
+                        <option value="">SELECT</option>
+
+                        <option value="">CSE</option>
+                        <option value="">IT</option>
+                        <option value="">CSD</option>
+                        <option value="">CS</option>
+                        <option value="">EEE</option>
+                        <option value="">EIE</option>
+                        <option value="">Mechanical</option>
+                        <option value="">CIVIL</option>
+                        <option value="">CSIT</option>
+                    </select>
+
+                    <label for="skill">Skill:</label>
+                    <select id="skill">
+                        <option value="">SELECT</option>
+                        <option value="">JAVA</option>
+                        <option value="">C</option>
+                        <option value="">C++</option>
+                        <option value="">Java Script</option>
+                        <option value="">PYTHON</option>
+                        <option value="">HTML</option>
+                        <option value="">CSS</option>
+                        <option value="">Full Stack</option>
+                        <option value="">MySQ:</option>
+                    </select>
+
+                    <label for="qualification">Qualification:</label>
+                    <select id="qualification">
+                        <option value="">SELECT</option>
+                        <option value="">B.Tech III</option>
+                        <option value="">B.Tech IV</option>
+                        <option value="">M.Tech</option>
+                    </select>
+
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+
+            <div class="profile-section">
+                <h2>Welcome</h2>
+
+                <button id="viewProfile">View Profile</button>
+                
+
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>All the Rights Reserved @OCSS</p>
+    </footer>
+
+    <script>
+        document.getElementById('viewProfile').addEventListener('click', async () => {
+            try {
+                const response = await fetch('/profile');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const profile = await response.json();
+                displayProfile(profile);
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+            }
+        });
+
+       
+
+        function displayProfile(profile) {
+            const profileSection = document.querySelector('.profile-section');
+            profileSection.innerHTML = `
+            <div>
+                <button id="closeProfile" onclick="closeProfile()">Close</button>
+                <h2>Profile Details</h2>
+                <p>UserName: ${profile.username}</p>
+                <p>Date of Birth: ${profile.dob}</p>
+                <p>Gender: ${profile.gender}</p>
+                <p>Mobile: ${profile.mobile}</p>
+                <p>Email: ${profile.email}</p>
+                <p>Roll No: ${profile.rollNo}</p>
+                <p>Address: ${profile.address}</p>
+                <p>City: ${profile.city}</p>
+                <p>State: ${profile.state}</p>
+                <p>Pincode: ${profile.pincode}</p>
+            </div>
+            `;
+        }
+
+        
+        
+
+
+        
+
+        // Function to close the displayed profile or educational details
+        function closeProfile() {
+            const profileSection = document.querySelector('.profile-section');
+            profileSection.innerHTML = `
+        <h2>Welcome</h2>
+        <button id="viewProfile">View Profile</button>
+        
+    `;
+
+            // Reattach event listeners to the buttons
+            document.getElementById('viewProfile').addEventListener('click', async () => {
+                try {
+                    const response = await fetch('/profile');
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    const profile = await response.json();
+                    displayProfile(profile);
+                } catch (error) {
+                    console.error('There was a problem with the fetch operation:', error);
+                }
+            });
+
+            document.getElementById('viewEducationDetails').addEventListener('click', async () => {
+                try {
+                    const response = await fetch('/education');
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    const educationDetails = await response.json();
+                    displayEducationDetails(educationDetails);
+                } catch (error) {
+                    console.error('There was a problem with the fetch operation:', error);
+                }
+            });
+        }
+
+
+    </script>
+
+
+
+</body>
+
+</html>
